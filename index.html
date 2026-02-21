@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI זה קל - ספרינט AI של 14 יום</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #141414;
+            --card-bg: #1a1a1a;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --border-color: #27272a;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Heebo', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--accent-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .urgency-badge {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-large {
+            padding: 1.25rem 3rem;
+            font-size: 1.2rem;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--secondary-bg);
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .trust-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .trust-item {
+            padding: 1.5rem;
+        }
+
+        .trust-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .trust-text {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Section Styles */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+        }
+
+        /* Problem Section */
+        .problem-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .problem-item {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .problem-item:hover {
+            transform: translateY(-5px);
+            border-color: #ef4444;
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.2);
+        }
+
+        .problem-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .problem-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #ef4444;
+        }
+
+        .problem-text {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .problem-conclusion {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ef4444;
+            padding: 2rem;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        /* Solution Cards */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .solution-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .solution-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .card-text {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Learning Cards */
+        .learning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .learning-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .learning-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-purple);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.2);
+        }
+
+        .session-number {
+            display: inline-block;
+            background: var(--gradient-1);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .learning-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .learning-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .learning-list li {
+            color: var(--text-secondary);
+            padding: 0.5rem 0;
+            padding-right: 1.5rem;
+            position: relative;
+        }
+
+        .learning-list li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            right: 50%;
+            transform: translateX(50%);
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-1);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            width: calc(50% - 40px);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-blue);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .timeline-date {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-text {
+            color: var(--text-secondary);
+        }
+
+        /* Included Section */
+        .included-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .included-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .included-item:hover {
+            transform: translateX(-5px);
+            border-color: var(--accent-green);
+        }
+
+        .check-icon {
+            color: var(--accent-green);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .bonus-box {
+            background: var(--gradient-2);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        /* Comparison Section */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .comparison-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .comparison-card.bad {
+            border-color: #ef4444;
+        }
+
+        .comparison-card.good {
+            border-color: var(--accent-green);
+        }
+
+        .comparison-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .comparison-list {
+            list-style: none;
+        }
+
+        .comparison-list li {
+            padding: 0.75rem 0;
+            padding-right: 1.5rem;
+            position: relative;
+        }
+
+        .comparison-list.bad li::before {
+            content: '✗';
+            position: absolute;
+            right: 0;
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        .comparison-list.good li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .quote-author {
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: #fbbf24;
+            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.2);
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .testimonial-role {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent-blue);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: var(--card-bg);
+            padding: 6rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-container {
+            background: var(--secondary-bg);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            margin-top: 3rem;
+        }
+
+        .form-placeholder {
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px dashed var(--accent-blue);
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .divider {
+            margin: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-bg);
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent-blue);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--text-secondary);
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 8rem 1.5rem 4rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .timeline::before {
+                right: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-right: 0 !important;
+                margin-left: 60px !important;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .solution-grid,
+            .learning-grid,
+            .comparison-grid,
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🤖 AI זה קל</div>
+            <div class="cta-buttons">
+                <a href="#form" class="btn btn-primary">שריין מקום עכשיו</a>
+                <a href="https://wa.me/yourphone" class="btn btn-secondary">💬 דבר איתי בווטסאפ</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="urgency-badge">🔥 הספרינט הבא מתחיל ב-24.02 | נשארו 12 מקומות</div>
+            <h1>הפוך למומחה תוכן דיגיטלי ב-14 יום<br>עם ליווי צמוד שלא עוזב אותך</h1>
+            <p class="subtitle">ספרינט AI מעשי שמלמד אותך לייצר תוכן ולקוחות מהרשתות החברתיות<br>יד ביד, לא לבד</p>
+            <div class="hero-cta">
+                <a href="#form" class="btn btn-primary btn-large">שריין מקום בספרינט הבא ↓</a>
+                <a href="https://wa.me/yourphone" class="btn btn-secondary btn-large">💬 דבר איתי בווטסאפ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-content">
+            <div class="trust-item">
+                <div class="trust-number">300+</div>
+                <div class="trust-text">בוגרים מרוצים</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number">14 ימים</div>
+                <div class="trust-text">לתוצאות מוכחות</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number">ליווי אישי</div>
+                <div class="trust-text">לכל לקוח</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number">5 כלי AI</div>
+                <div class="trust-text">מתקדמים</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Problem Section -->
+    <section id="problem">
+        <h2>למה אתה עדיין לא מקבל לקוחות<br>מהרשתות החברתיות?</h2>
+        <p class="section-subtitle">הכאבים שמונעים ממך להתחיל</p>
+        
+        <div class="problem-list">
+            <div class="problem-item">
+                <div class="problem-icon">❌</div>
+                <h3 class="problem-title">אין לך מושג איך לייצר תוכן</h3>
+                <p class="problem-text">כל פעם אתה בוהה במסך הריק וחושב "מה לכתוב היום?"</p>
+            </div>
+
+            <div class="problem-item">
+                <div class="problem-icon">❌</div>
+                <h3 class="problem-title">לא רוצה לצלם את עצמך</h3>
+                <p class="problem-text">הרעיון לעמוד מול המצלמה גורם לך לוותר לפני שהתחלת</p>
+            </div>
+
+            <div class="problem-item">
+                <div class="problem-icon">❌</div>
+                <h3 class="problem-title">אין לך כוח או זמן</h3>
+                <p class="problem-text">אתה עסוק בעסק, אין לך 3 שעות ביום לשבת על תוכן</p>
+            </div>
+
+            <div class="problem-item">
+                <div class="problem-icon">❌</div>
+                <h3 class="problem-title">לא רוצה להוציא הון</h3>
+                <p class="problem-text">איש שיווק + צלם + עורך = ₪10,000+ בחודש, ובסוף מתבאס על התוצאה</p>
+            </div>
+
+            <div class="problem-item">
+                <div class="problem-icon">❌</div>
+                <h3 class="problem-title">דוחה את זה כבר חודשים</h3>
+                <p class="problem-text">אתה יודע שאתה צריך להתחיל, אבל חסר לך מישהו שידחוף אותך לעשות את זה</p>
+            </div>
+        </div>
+
+        <div class="problem-conclusion">
+            בזמן הזה, המתחרים שלך כבר מקבלים לקוחות מהסושיאל.
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution">
+        <h2>ספרינט AI של 14 יום<br>מאפס למומחה תוכן</h2>
+        <p class="section-subtitle">לא סתם קורס שתצפה בו ותשכח. ליווי צמוד יד ביד עד שאתה עושה בפועל.</p>
+
+        <div class="solution-grid">
+            <div class="solution-card">
+                <div class="card-icon">📚</div>
+                <h3 class="card-title">למידה מעשית</h3>
+                <div class="card-text">
+                    <ul class="learning-list">
+                        <li>5 מפגשים חיים בזום</li>
+                        <li>תרגול מעשי בזמן אמת</li>
+                        <li>שיעורי בית עם משוב</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="solution-card">
+                <div class="card-icon">👤</div>
+                <h3 class="card-title">ליווי אישי</h3>
+                <div class="card-text">
+                    <ul class="learning-list">
+                        <li>מפגש 1:1 איתי</li>
+                        <li>זמין לשאלות בכל עת</li>
+                        <li>לא עוזב אותך לבד</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="solution-card">
+                <div class="card-icon">🤝</div>
+                <h3 class="card-title">קהילה תומכת</h3>
+                <div class="card-text">
+                    <ul class="learning-list">
+                        <li>קבוצת ווטסאפ פרטית</li>
+                        <li>תמיכה הדדית</li>
+                        <li>נשאר איתך גם אחרי</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You'll Learn -->
+    <section id="learning">
+        <h2>5 כלי AI שיהפכו אותך<br>למכונת תוכן</h2>
+        <p class="section-subtitle">כל מפגש = כלי חדש שתדע להשתמש בו באותו יום</p>
+
+        <div class="learning-grid">
+            <div class="learning-card">
+                <div class="session-number">🎬 מפגש 1</div>
+                <h3 class="learning-title">תסריטים ויראליים</h3>
+                <ul class="learning-list">
+                    <li>כתיבת תסריטים מנצחים עם AI</li>
+                    <li>בלי לחשוב, בלי לתכנן - AI עושה הכל</li>
+                    <li>תבניות מוכנות שרק ממלאים</li>
+                </ul>
+            </div>
+
+            <div class="learning-card">
+                <div class="session-number">📹 מפגש 2</div>
+                <h3 class="learning-title">סרטונים ללא מצלמה</h3>
+                <ul class="learning-list">
+                    <li>יצירת סרטונים מהמיטה</li>
+                    <li>בלי עריכה, בלי מצלמה, בלי קול</li>
+                    <li>AI יוצר הכל בשבילך</li>
+                </ul>
+            </div>
+
+            <div class="learning-card">
+                <div class="session-number">🎯 מפגש 3</div>
+                <h3 class="learning-title">קידום ממומן חכם</h3>
+                <ul class="learning-list">
+                    <li>קמפיין פרסומי בלי קמפיינר</li>
+                    <li>AI כותב את הקופי ובוחר את הקהל</li>
+                    <li>חוסך אלפי שקלים</li>
+                </ul>
+            </div>
+
+            <div class="learning-card">
+                <div class="session-number">🌐 מפגש 4</div>
+                <h3 class="learning-title">דף נחיתה בחינם</h3>
+                <ul class="learning-list">
+                    <li>בניית דף נחיתה מקצועי</li>
+                    <li>בחינם לכל החיים</li>
+                    <li>ללא צורך בתכנות</li>
+                </ul>
+            </div>
+
+            <div class="learning-card">
+                <div class="session-number">💬 מפגש 5</div>
+                <h3 class="learning-title">אוטומציות ווטסאפ</h3>
+                <ul class="learning-list">
+                    <li>חימום לידים אוטומטי</li>
+                    <li>מענה אוטומטי 24/7</li>
+                    <li>הכל בחינם, בלי כסף</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section id="timeline">
+        <h2>המסלול שלך ל-14 הימים הבאים</h2>
+        <p class="section-subtitle">כל מפגש עם תרגול מעשי ושיעור בית</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">📅 יום 1 (24.02 - שלישי 19:00)</div>
+                    <div class="timeline-title">מפגש לייב #1: תסריטים ויראליים</div>
+                    <div class="timeline-text">שיעור בית: כתוב 3 תסריטים</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">📅 יום 3 (חמישי)</div>
+                    <div class="timeline-title">מפגש לייב #2: סרטונים ללא מצלמה</div>
+                    <div class="timeline-text">שיעור בית: צור 2 סרטונים</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">📅 יום 5 (מוצאי שבת)</div>
+                    <div class="timeline-title">מפגש לייב #3: קידום ממומן</div>
+                    <div class="timeline-text">שיעור בית: הכן קמפיין ראשון</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">📅 יום 8 (שלישי)</div>
+                    <div class="timeline-title">מפגש לייב #4: דף נחיתה</div>
+                    <div class="timeline-text">שיעור בית: בנה דף לעסק שלך</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">📅 יום 10 (חמישי)</div>
+                    <div class="timeline-title">מפגש לייב #5: אוטומציות ווטסאפ</div>
+                    <div class="timeline-text">שיעור בית: הגדר אוטומציה</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">📅 יום 12-14</div>
+                    <div class="timeline-title">מפגשים אישיים 1:1</div>
+                    <div class="timeline-text">סיכום + פתרון בעיות + קבלת תעודה</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included -->
+    <section id="included">
+        <h2>מה אתה מקבל בספרינט?</h2>
+        <p class="section-subtitle">כל מה שאתה צריך כדי להצליח</p>
+
+        <div class="included-list">
+            <div class="included-item">
+                <span class="check-icon">✅</span>
+                <span>5 מפגשי זום חיים (90 דקות כל אחד)</span>
+            </div>
+            <div class="included-item">
+                <span class="check-icon">✅</span>
+                <span>הקלטות של כל המפגשים (גישה לכל החיים)</span>
+            </div>
+            <div class="included-item">
+                <span class="check-icon">✅</span>
+                <span>מפגש אישי 1:1</span>
+            </div>
+            <div class="included-item">
+                <span class="check-icon">✅</span>
+                <span>קבוצת ווטסאפ פרטית (תמיכה 24/7)</span>
+            </div>
+            <div class="included-item">
+                <span class="check-icon">✅</span>
+                <span>שיעורי בית מעשיים עם משוב</span>
+            </div>
+            <div class="included-item">
+                <span class="check-icon">✅</span>
+                <span>תעודת סיום: "מאסטר בתוכן וצמיחה דיגיטלית עם AI"</span>
+            </div>
+            <div class="included-item">
+                <span class="check-icon">✅</span>
+                <span>גישה לעדכונים על כלים חדשים</span>
+            </div>
+            <div class="included-item">
+                <span class="check-icon">✅</span>
+                <span>אפשרות לחזור על הספרינט (אם פתוח מחזור חדש)</span>
+            </div>
+        </div>
+
+        <div class="bonus-box">
+            🎁 בונוס מיוחד: מפגש ראשון ללא עלות - לא אהבת, לא שילמת!
+        </div>
+    </section>
+
+    <!-- Why Different -->
+    <section id="different">
+        <h2>למה זה לא עוד קורס שתשכח?</h2>
+        <p class="section-subtitle">ההבדל שעושה את כל ההבדל</p>
+
+        <div class="comparison-grid">
+            <div class="comparison-card bad">
+                <h3 class="comparison-title">❌ קורסים רגילים</h3>
+                <ul class="comparison-list bad">
+                    <li>צופה ושוכח</li>
+                    <li>לא עושה בפועל</li>
+                    <li>נשאר לבד אחרי</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card good">
+                <h3 class="comparison-title">✅ הספרינט שלנו</h3>
+                <ul class="comparison-list good">
+                    <li>עושה בזמן אמת</li>
+                    <li>ליווי צמוד יד ביד</li>
+                    <li>לא עוזב אותך לבד</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="quote-section">
+            <p class="quote-text">"אני מאמין שאף אחד לא צריך להישאר מאחור בעידן ה-AI. אבל יותר מזה - אני מאמין שאף אחד לא צריך לעשות את זה לבד. לכן אני כאן. איתך. יד ביד. עד שאתה מצליח."</p>
+            <p class="quote-author">— [השם שלך], מייסד "AI זה קל"</p>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+        <h2>מה בוגרי הספרינט אומרים?</h2>
+        <p class="section-subtitle">סיפורי הצלחה אמיתיים</p>
+
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"לפני הספרינט, היה לי אפס נוכחות ברשתות. היום אני מעלה 5 סרטונים בשבוע ומקבל 3-4 פניות בחודש מאינסטגרם. ו[השם] היה איתי בכל צעד."</p>
+                <p class="testimonial-author">דני כהן</p>
+                <p class="testimonial-role">בעל סטודיו לעיצוב פנים</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"חשבתי שאני לא טכנולוגית מספיק. התברר שזה ממש פשוט עם הכלים הנכונים והליווי הנכון. תודה ענקית!"</p>
+                <p class="testimonial-author">מיכל לוי</p>
+                <p class="testimonial-role">מאמנת כושר</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"זה לא סתם עוד קורס. [השם] באמת זמין, באמת עוזר, באמת דואג שאתה מצליח. משקיע מעולה."</p>
+                <p class="testimonial-author">יוסי אברהם</p>
+                <p class="testimonial-role">יועץ פיננסי</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <h2>שאלות נפוצות</h2>
+        <p class="section-subtitle">כל מה שרצית לדעת</p>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">
+                    ❓ האם אני צריך ידע טכנולוגי מראש?
+                </div>
+                <div class="faq-answer">
+                    לא! זה בדיוק למי שלא טכנולוגי. אתה צריך רק מחשב נייד ואינטרנט.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    ❓ כמה זמן ביום אני צריך להשקיע?
+                </div>
+                <div class="faq-answer">
+                    המפגשים החיים הם 90 דקות כל אחד (פעמיים בשבוע). שיעורי הבית לוקחים 30-60 דקות. סה"כ בערך 3-4 שעות בשבוע.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    ❓ מה קורה אם אני מפספס מפגש?
+                </div>
+                <div class="faq-answer">
+                    יש לך גישה להקלטות. אבל ממליץ להגיע חי כי זה הרבה יותר אפקטיבי.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    ❓ האם זה מתאים לכל סוג עסק?
+                </div>
+                <div class="faq-answer">
+                    כן! זה מתאים לכל בעל עסק שרוצה לקוחות מהרשתות החברתיות - קואצ'ים, טיפולים, שירותים מקצועיים, מוצרים, וכל תחום.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    ❓ מה קורה אחרי 14 הימים?
+                </div>
+                <div class="faq-answer">
+                    אתה יכול להמשיך איתנו במנוי חודשי (תמיכה + עדכונים) או להישאר עצמאי. אין התחייבות.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    ❓ איך עובד "מפגש ראשון ללא עלות"?
+                </div>
+                <div class="faq-answer">
+                    אתה מגיע למפגש הראשון חינם. אם לא אהבת - לא שילמת. אם אהבת - ממשיך לשאר המפגשים.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="form">
+        <div class="cta-container">
+            <h2>מוכן להתחיל?</h2>
+            <p class="section-subtitle">הספרינט הבא מתחיל ב-24.02 (יום שלישי, 19:00)<br>נשארו 12 מקומות בלבד</p>
+
+            <div class="form-container">
+                <div class="form-placeholder">
+                    📋 כאן יוטמע טופס JotForm שלך<br><br>
+                    שדות מומלצים: שם מלא, טלפון, אימייל, שם העסק / תחום,<br>
+                    "מה הכי מעכב אותך היום להתחיל עם תוכן?"
+                </div>
+            </div>
+
+            <div class="divider">או</div>
+
+            <a href="https://wa.me/yourphone" class="btn btn-primary btn-large">💬 העדפה לדבר איתי קודם? לחץ כאן לווטסאפ</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo" style="margin-bottom: 1rem;">🤖 AI זה קל</div>
+                <p style="color: var(--text-secondary);">ספרינט AI מעשי שמלמד אותך לייצר תוכן ולקוחות מהרשתות החברתיות</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>קישורים</h3>
+                <ul class="footer-links">
+                    <li><a href="#problem">הבעיה</a></li>
+                    <li><a href="#solution">הפתרון</a></li>
+                    <li><a href="#learning">מה תלמד</a></li>
+                    <li><a href="#testimonials">המלצות</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>מידע</h3>
+                <ul class="footer-links">
+                    <li><a href="#">מי אני</a></li>
+                    <li><a href="#">תנאי שימוש</a></li>
+                    <li><a href="#">מדיניות פרטיות</a></li>
+                    <li><a href="#">צור קשר</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>רשתות חברתיות</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">👍</a>
+                    <a href="#" class="social-link">💼</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2025 AI זה קל. כל הזכויות שמורות.
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = answer.style.display === 'block';
+                
+                // Close all answers
+                document.querySelectorAll('.faq-answer').forEach(a => {
+                    a.style.display = 'none';
+                });
+                
+                // Toggle clicked answer
+                answer.style.display = isOpen ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>
