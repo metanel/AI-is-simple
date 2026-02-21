@@ -337,17 +337,24 @@
         }
 
         .feature-card {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    /* שדרגנו את האנימציה שתהיה חלקה יותר */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    position: relative;
+    z-index: 1;
+}
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.15);
-        }
+.feature-card:hover {
+    transform: translateY(-8px);
+    /* מסגרת מוארת קלות בצבעי המותג */
+    border-color: rgba(139, 92, 246, 0.5); 
+    /* צל שחור עמוק למטה + זוהר צבעוני עדין מסביב */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(139, 92, 246, 0.15);
+    z-index: 2;
+}
 
         .feature-icon {
             font-size: 3rem;
@@ -1065,24 +1072,24 @@
         </div>
 
         <div class="features-grid">
-            <div class="feature-card">
-                <span class="feature-icon">🎯</span>
-                <h3 class="feature-title">6 מפגשי Zoom חיים</h3>
-                <p class="feature-text">פעמיים בשבוע, 90 דקות. עושים ביחד, בזמן אמת. לא הקלטות - מפגשים חיים שבהם אתה מקבל תשובות.</p>
-            </div>
+    <div class="feature-card">
+        <span class="feature-icon">🎯</span>
+        <h3 class="feature-title">6 מפגשי Zoom חיים</h3>
+        <p class="feature-text">פעמיים בשבוע, 90 דקות. עושים ביחד, בזמן אמת. לא הקלטות שמעלות אבק בתיקייה - אלא עבודה מעשית שבה אתה מקבל פידבק מיידי.</p>
+    </div>
 
-            <div class="feature-card">
-                <span class="feature-icon">⚡</span>
-                <h3 class="feature-title">שיעורי בית שבאמת עושים</h3>
-                <p class="feature-text">לא סתם תרגילים תיאורטיים. תרגילים קצרים ופרקטיים שמייצרים תוכן אמיתי לעסק שלך.</p>
-            </div>
+    <div class="feature-card">
+        <span class="feature-icon">🤝</span>
+        <h3 class="feature-title">ליווי אישי 1:1 צמוד</h3>
+        <p class="feature-text">זה לא "שגר ושכח". במהלך הספרינט נשב לפגישה אישית רק אני ואתה. נעבור על העסק שלך, נדייק את המסרים ונוודא שהכל ברור. אני זמין לשאלות שלך בכל עת - אתה לא עובר את זה לבד בשום שלב.</p>
+    </div>
 
-            <div class="feature-card">
-                <span class="feature-icon">💬</span>
-                <h3 class="feature-title">תמיכה בווטסאפ לאורך הדרך</h3>
-                <p class="feature-text">שאלה? בעיה? תקוע? אני כאן. תכתוב לי בווטסאפ ותקבל תשובה. לא נשאר לבד.</p>
-            </div>
-        </div>
+    <div class="feature-card">
+        <span class="feature-icon">🔥</span>
+        <h3 class="feature-title">קהילת כוח (גם בחיים האמיתיים)</h3>
+        <p class="feature-text">שכח מעוד קבוצת וואטסאפ שקטה. אנחנו בונים כאן קהילה חיה, דוחפת ומרימה שכוללת גם מפגשים פיזיים! המטרה היא להפוך את ה-AI למשהו אנושי ומוחשי, ולייצר לך נטוורקינג מטורף עם אנשים שרצים יחד איתך.</p>
+    </div>
+</div>
     </section>
 
     <section id="schedule">
