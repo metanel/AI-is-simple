@@ -38,7 +38,7 @@
             width: 100%;
         }
 
-        /* Header - תוקן למובייל */
+        /* Header */
         header {
             position: fixed;
             top: 0;
@@ -870,12 +870,16 @@
             color: var(--text-secondary);
         }
 
-        /* Mobile Responsive - תוקנו הבעיות */
+        /* Mobile Responsive - תוקן למובייל */
         @media (max-width: 768px) {
-            /* תיקון Header למובייל */
             nav {
                 padding: 0.75rem 0.75rem;
                 gap: 0.5rem;
+            }
+
+            /* כאן הפתרון: מסתיר את כפתור הווטסאפ המשני במסכים קטנים בלבד */
+            .cta-buttons .btn-secondary {
+                display: none;
             }
 
             .logo {
@@ -1005,7 +1009,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav>
             <div class="logo">🤖 AI זה קל</div>
@@ -1016,7 +1019,6 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <div class="urgency-badge">⏰ נפתח רק פעם בחודש | הספרינט הבא: 24.02</div>
@@ -1029,7 +1031,6 @@
         </div>
     </section>
 
-    <!-- Trust Bar -->
     <div class="trust-bar">
         <div class="trust-content">
             <div class="trust-item">
@@ -1051,7 +1052,6 @@
         </div>
     </div>
 
-    <!-- Problem Section -->
     <section id="problem">
         <h2>אתה יודע שאתה צריך נוכחות ברשתות. אבל...</h2>
         <p class="section-subtitle">זה מה שמעכב אותך היום</p>
@@ -1095,7 +1095,6 @@
         </div>
     </section>
 
-    <!-- Solution Section -->
     <section id="solution">
         <h2>הנה הפתרון</h2>
         <p class="section-subtitle">ספרינט AI של 14 יום שבו נעשה את זה ביחד</p>
@@ -1126,13 +1125,11 @@
         </div>
     </section>
 
-    <!-- Schedule Section -->
     <section id="schedule">
         <h2>התוכנית המלאה של הספרינט</h2>
         <p class="section-subtitle">14 יום שמשנים את כל המשחק</p>
 
         <div class="schedule-container">
-            <!-- שבוע 1 -->
             <div class="week-block">
                 <h3 class="week-title">שבוע 1: בניית היסודות</h3>
 
@@ -1182,7 +1179,6 @@
                 </div>
             </div>
 
-            <!-- שבוע 2 -->
             <div class="week-block">
                 <h3 class="week-title">שבוע 2: יצירת סדרה מלאה + תכנון פרסום</h3>
 
@@ -1234,7 +1230,6 @@
         </div>
     </section>
 
-    <!-- What You'll Learn -->
     <section id="learning">
         <h2>בסוף הספרינט, יהיה לך:</h2>
         <p class="section-subtitle">לא רק ידע - גם תוצאות</p>
@@ -1272,7 +1267,6 @@
         </div>
     </section>
 
-    <!-- Results Section -->
     <section id="results">
         <h2>מה קורה בפועל אחרי הספרינט?</h2>
         <p class="section-subtitle">אלה לא הבטחות - אלה תוצאות מתועדות</p>
@@ -1304,7 +1298,6 @@
         </div>
     </section>
 
-    <!-- Investment Section -->
     <section id="investment">
         <h2>כמה זה עולה?</h2>
         <p class="section-subtitle">השקעה שמחזירה את עצמה במהירות</p>
@@ -1356,7 +1349,6 @@
         </div>
     </section>
 
-    <!-- Why Different -->
     <section id="different">
         <h2>למה זה לא עוד קורס שתשכח?</h2>
         <p class="section-subtitle">ההבדל שעושה את כל ההבדל</p>
@@ -1387,7 +1379,6 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
     <section id="testimonials">
         <h2>מה בוגרי הספרינט אומרים?</h2>
         <p class="section-subtitle">סיפורי הצלחה אמיתיים</p>
@@ -1416,7 +1407,6 @@
         </div>
     </section>
 
-    <!-- FAQ -->
     <section id="faq">
         <h2>שאלות נפוצות</h2>
         <p class="section-subtitle">כל מה שרצית לדעת</p>
@@ -1478,7 +1468,6 @@
         </div>
     </section>
 
-    <!-- Final CTA -->
     <section class="final-cta" id="form">
         <div class="cta-container">
             <h2>מוכן להתחיל?</h2>
@@ -1498,7 +1487,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
