@@ -225,41 +225,31 @@
             font-size: 1.1rem;
         }
 
-        /* Trust Bar */
-        .trust-bar {
-            background: var(--secondary-bg);
-            padding: 3rem 1.5rem;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-
-        .trust-content {
-            max-width: 1400px;
+        /* Video Section */
+        .video-section {
+            max-width: 1000px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
+            padding: 2rem 1.5rem 4rem;
         }
 
-        .trust-item {
-            padding: 1.5rem;
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* שומר על יחס 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            background: #000;
         }
 
-        .trust-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-
-        .trust-text {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
         }
 
         /* Section Styles */
@@ -1017,26 +1007,17 @@
         </div>
     </section>
 
-    <div class="trust-bar">
-        <div class="trust-content">
-            <div class="trust-item">
-                <div class="trust-number">14</div>
-                <div class="trust-text">ימים של ליווי צמוד</div>
-            </div>
-            <div class="trust-item">
-                <div class="trust-number">6</div>
-                <div class="trust-text">מפגשי Zoom חיים</div>
-            </div>
-            <div class="trust-item">
-                <div class="trust-number">100%</div>
-                <div class="trust-text">עבודה מעשית</div>
-            </div>
-            <div class="trust-item">
-                <div class="trust-number">0₪</div>
-                <div class="trust-text">לא אהבת? לא שילמת</div>
-            </div>
+    <section class="video-section">
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/HYzsXcqqEf4" 
+                title="AI זה פשוט - סרטון הסבר" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
         </div>
-    </div>
+    </section>
 
     <section id="problem">
         <h2>הרי ידוע לך שנוכחות ברשתות היא חובה. אבל...</h2>
