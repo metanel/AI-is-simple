@@ -389,18 +389,6 @@
             margin: 0 auto;
         }
 
-        .week-block {
-            margin-bottom: 3rem;
-        }
-
-        .week-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            padding-right: 1rem;
-            border-right: 4px solid var(--accent-blue);
-        }
-
         .day-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -451,57 +439,6 @@
             line-height: 1.7;
         }
 
-        /* Learning Section */
-        .learning-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .learning-card {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-        }
-
-        .learning-number {
-            font-size: 3rem;
-            font-weight: 800;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .learning-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .learning-list {
-            list-style: none;
-        }
-
-        .learning-list li {
-            padding: 0.75rem 0;
-            padding-right: 2rem;
-            position: relative;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .learning-list li:before {
-            content: '✓';
-            position: absolute;
-            right: 0;
-            color: var(--accent-green);
-            font-weight: bold;
-        }
-
         /* Results Section */
         .results-grid {
             display: grid;
@@ -539,77 +476,6 @@
         .result-text {
             color: var(--text-secondary);
             line-height: 1.7;
-        }
-
-        /* Investment Section */
-        .investment-box {
-            max-width: 700px;
-            margin: 3rem auto;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
-            border: 2px solid var(--accent-purple);
-            border-radius: 20px;
-            padding: 3rem;
-            text-align: center;
-        }
-
-        .price-container {
-            margin: 2rem 0;
-        }
-
-        .price-label {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-
-        .price {
-            font-size: 4rem;
-            font-weight: 900;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-
-        .price-note {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-        }
-
-        .included-list {
-            list-style: none;
-            text-align: right;
-            margin: 2rem 0;
-        }
-
-        .included-list li {
-            padding: 1rem 0;
-            padding-right: 2.5rem;
-            position: relative;
-            font-size: 1.1rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .included-list li:last-child {
-            border-bottom: none;
-        }
-
-        .check-icon {
-            position: absolute;
-            right: 0;
-            font-size: 1.3rem;
-        }
-
-        .bonus-box {
-            background: rgba(16, 185, 129, 0.1);
-            border: 2px solid var(--accent-green);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-top: 2rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--accent-green);
         }
 
         /* Comparison Section */
@@ -668,29 +534,6 @@
             right: 0;
             color: var(--accent-green);
             font-weight: bold;
-        }
-
-        .quote-section {
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 3rem;
-            background: var(--card-bg);
-            border-radius: 16px;
-            border-right: 4px solid var(--accent-blue);
-        }
-
-        .quote-text {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            font-style: italic;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .quote-author {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--accent-blue);
         }
 
         /* Testimonials */
@@ -897,6 +740,29 @@
             color: var(--text-secondary);
         }
 
+        .quote-section {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 3rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border-right: 4px solid var(--accent-blue);
+        }
+
+        .quote-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-author {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             nav {
@@ -937,10 +803,6 @@
 
             .price {
                 font-size: 3rem;
-            }
-            
-            .trust-content {
-                gap: 1.5rem;
             }
         }
 
@@ -1075,27 +937,26 @@
         </div>
 
         <div class="features-grid">
-    <div class="feature-card">
-        <span class="feature-icon">🎯</span>
-        <h3 class="feature-title">מפגשים חיים</h3>
-        <p class="feature-text">פעמיים בשבוע, עושים ביחד, בזמן אמת. לא הקלטות שמעלות אבק בתיקייה - אלא עבודה מעשית שכוללת פידבק מיידי במקום.</p>
-    </div>
+            <div class="feature-card">
+                <span class="feature-icon">🎯</span>
+                <h3 class="feature-title">מפגשים חיים</h3>
+                <p class="feature-text">פעמיים בשבוע, עושים ביחד, בזמן אמת. לא הקלטות שמעלות אבק בתיקייה - אלא עבודה מעשית שכוללת פידבק מיידי במקום.</p>
+            </div>
 
-    <div class="feature-card">
-        <span class="feature-icon">🤝</span>
-        <h3 class="feature-title">ליווי אישי 1:1 צמוד</h3>
-        <p class="feature-text">זה לא "שגר ושכח". במהלך הספרינט נשב לפגישה אישית בארבע עיניים. נעבור על העסק שלך, נדייק את המסרים ונוודא שהכל ברור. אני זמין לשאלות שלך בכל עת - אין שום מצב לעבור את זה לבד בשום שלב.</p>
-    </div>
+            <div class="feature-card">
+                <span class="feature-icon">🤝</span>
+                <h3 class="feature-title">ליווי אישי 1:1 צמוד</h3>
+                <p class="feature-text">זה לא "שגר ושכח". במהלך הספרינט נשב לפגישה אישית בארבע עיניים. נעבור על העסק שלך, נדייק את המסרים ונוודא שהכל ברור. אני זמין לשאלות שלך בכל עת - אין שום מצב לעבור את זה לבד בשום שלב.</p>
+            </div>
 
-    <div class="feature-card">
-        <span class="feature-icon">🔥</span>
-        <h3 class="feature-title">קהילה אמיתית (כן, גם בחיים האמיתיים)</h3>
-        <p class="feature-text">אפשר לשכוח מעוד קבוצת וואטסאפ שקטה. אנחנו בונים כאן קהילה חיה, דוחפת ומרימה שכוללת גם מפגשים פיזיים! המטרה היא להפוך את ה-AI למשהו אנושי ומוחשי, ולייצר לך חיבור עם אנשים שרצים יחד איתך.</p>
-    </div>
-</div>
-    </section>
+            <div class="feature-card">
+                <span class="feature-icon">🔥</span>
+                <h3 class="feature-title">קהילה אמיתית (כן, גם בחיים האמיתיים)</h3>
+                <p class="feature-text">אפשר לשכוח מעוד קבוצת וואטסאפ שקטה. אנחנו בונים כאן קהילה חיה, דוחפת ומרימה שכוללת גם מפגשים פיזיים! המטרה היא להפוך את ה-AI למשהו אנושי ומוחשי, ולייצר לך חיבור עם אנשים שרצים יחד איתך.</p>
+            </div>
+        </div>
 
-    <div style="text-align: center; margin-top: 2.5rem;">
+        <div style="text-align: center; margin-top: 3rem;">
             <a href="#form" class="btn btn-primary btn-large">🚀 אני בפנים!</a>
         </div>
     </section>
@@ -1104,51 +965,53 @@
         <h2>5 כלי AI שיהפכו אותך למכונת תוכן</h2>
         <p class="section-subtitle">כל מפגש = שליטה בכלי חדש לשימוש מידיי כבר באותו היום</p>
 
-                <div class="day-card">
-                    <div class="day-header">
-                        <span class="day-number">מפגש 1</span>
-                        <span class="day-type">שיעור אונליין</span>
-                    </div>
-                    <h4 class="day-title">🎬 תסריטים ויראליים</h4>
-                    <p class="day-description">כתיבת תסריטים מנצחים עם AI. בלי לשבור את הראש ובלי לתכנן שעות - ה-AI פשוט עושה הכל. עובדים עם תבניות מוכנות שרק צריך למלא.</p>
+        <div class="schedule-container">
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-number">מפגש 1</span>
+                    <span class="day-type">שיעור אונליין</span>
                 </div>
-
-                <div class="day-card">
-                    <div class="day-header">
-                        <span class="day-number">מפגש 2</span>
-                        <span class="day-type">שיעור אונליין</span>
-                    </div>
-                    <h4 class="day-title">סרטונים ללא מצלמה</h4>
-                    <p class="day-description">יצירת סרטונים ממגנטים בלי לקום מהספה! אפס עריכה, בלי לפתוח מצלמה, ואפילו בלי להקליט קול. ה-AI מייצר את הכל בשבילך..</p>
-                </div>
-
-                <div class="day-card">
-                    <div class="day-header">
-                        <span class="day-number">מפגש 3</span>
-                        <span class="day-type">שיעור אונליין</span>
-                    </div>
-                    <h4 class="day-title">דף נחיתה בחינם לגמרי</h4>
-                    <p class="day-description">לבנות לעצמנו בית. בניית דף נחיתה מקצועי שיקלוט את הלקוחות. מערכת חינמית לכל החיים, ללא צורך לדעת אפילו שורת קוד אחת.</p>
-                </div>
+                <h4 class="day-title">🎬 תסריטים ויראליים</h4>
+                <p class="day-description">כתיבת תסריטים מנצחים עם AI. בלי לשבור את הראש ובלי לתכנן שעות - ה-AI פשוט עושה הכל. עובדים עם תבניות מוכנות שרק צריך למלא.</p>
             </div>
 
-                <div class="day-card">
-                    <div class="day-header">
-                        <span class="day-number">מפגש 4</span>
-                        <span class="day-type">שיעור אונליין</span>
-                    </div>
-                    <h4 class="day-title">קידום ממומן</h4>
-                    <p class="day-description">מריצים קמפיין פרסומי בלי קמפיינר. ה-AI כותב את הקופי ובוחר את הקהל המדויק, מה שחוסך עשרות אלפי שקלים על סוכנויות פרסום..</p>
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-number">מפגש 2</span>
+                    <span class="day-type">שיעור אונליין</span>
                 </div>
+                <h4 class="day-title">סרטונים ללא מצלמה</h4>
+                <p class="day-description">יצירת סרטונים ממגנטים בלי לקום מהספה! אפס עריכה, בלי לפתוח מצלמה, ואפילו בלי להקליט קול. ה-AI מייצר את הכל בשבילך.</p>
+            </div>
 
-                <div class="day-card">
-                    <div class="day-header">
-                        <span class="day-number">מפגש 5</span>
-                        <span class="day-type">שיעור אונליין</span>
-                    </div>
-                    <h4 class="day-title">אוטומציות בוואצאפ</h4>
-                    <p class="day-description">מערכת שעובדת 24/7. אוטומציה לחימום לידים ומענה מהיר לכל מתעניין. והכי טוב? עושים את הכל בכלים חינמיים לחלוטין.</p>
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-number">מפגש 3</span>
+                    <span class="day-type">שיעור אונליין</span>
                 </div>
+                <h4 class="day-title">דף נחיתה בחינם לגמרי</h4>
+                <p class="day-description">לבנות לעצמנו בית. בניית דף נחיתה מקצועי שיקלוט את הלקוחות. מערכת חינמית לכל החיים, ללא צורך לדעת אפילו שורת קוד אחת.</p>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-number">מפגש 4</span>
+                    <span class="day-type">שיעור אונליין</span>
+                </div>
+                <h4 class="day-title">קידום ממומן</h4>
+                <p class="day-description">מריצים קמפיין פרסומי בלי קמפיינר. ה-AI כותב את הקופי ובוחר את הקהל המדויק, מה שחוסך עשרות אלפי שקלים על סוכנויות פרסום.</p>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-number">מפגש 5</span>
+                    <span class="day-type">שיעור אונליין</span>
+                </div>
+                <h4 class="day-title">אוטומציות בוואצאפ</h4>
+                <p class="day-description">מערכת שעובדת 24/7. אוטומציה לחימום לידים ומענה מהיר לכל מתעניין. והכי טוב? עושים את הכל בכלים חינמיים לחלוטין.</p>
+            </div>
+        </div>
+    </section>
 
     <section id="results">
         <h2>מה קורה בפועל אחרי הספרינט?</h2>
@@ -1181,18 +1044,6 @@
         </div>
     </section>
 
-    <section id="investment">
-            <div class="bonus-box">
-                🎁 בונוס מיוחד: מפגש ראשון ללא עלות - לא אהבת, לא שילמת!
-            </div>
-        </div>
-    </section>
-
-        <div style="text-align: center; margin-top: 2.5rem;">
-            <a href="#form" class="btn btn-primary btn-large">קח אותי להרשמה כבר!</a>
-        </div>
-    </section>
-
     <section id="different">
         <h2>למה זה לא עוד קורס שתשכח?</h2>
         <p class="section-subtitle">ההבדל שעושה את כל ההבדל</p>
@@ -1216,6 +1067,7 @@
                 </ul>
             </div>
         </div>
+    </section>
 
     <section id="testimonials">
         <h2>מה בוגרי הספרינט אומרים?</h2>
@@ -1242,6 +1094,25 @@
                 <p class="testimonial-author">יוסי אברהם</p>
                 <p class="testimonial-role">יועץ פיננסי</p>
             </div>
+        </div>
+    </section>
+
+    <section class="final-cta" id="form">
+        <div class="cta-container" style="padding: 4rem 1.5rem;">
+            <h2>הצעד הראשון מתחיל כאן.</h2>
+            <p class="section-subtitle">הספרינט הבא מתחיל ב-24.02 (יום שלישי, 19:00)</p>
+
+            <div class="form-container">
+                <div class="form-placeholder">
+                    📋 כאן יוטמע טופס JotForm שלך<br><br>
+                    שדות מומלצים: שם מלא, טלפון, אימייל, שם העסק / תחום,<br>
+                    "מה הכי מעכב אותך היום להתחיל עם תוכן?"
+                </div>
+            </div>
+
+            <div class="divider">או</div>
+
+            <a href="https://wa.me/yourphone" class="btn btn-primary btn-large">💬 העדפה לדבר איתי קודם? לחץ כאן לווטסאפ</a>
         </div>
     </section>
 
@@ -1306,25 +1177,7 @@
         </div>
     </section>
 
-    <section class="final-cta" id="form">
-        <div class="cta-container">
-            <h2>הצעד הראשון מתחיל כאן.</h2>
-            <p class="section-subtitle">הספרינט הבא מתחיל ב-24.02 (יום שלישי, 19:00)</p>
-
-            <div class="form-container">
-                <div class="form-placeholder">
-                    📋 כאן יוטמע טופס JotForm שלך<br><br>
-                    שדות מומלצים: שם מלא, טלפון, אימייל, שם העסק / תחום,<br>
-                    "מה הכי מעכב אותך היום להתחיל עם תוכן?"
-                </div>
-            </div>
-
-            <div class="divider">או</div>
-
-            <a href="https://wa.me/yourphone" class="btn btn-primary btn-large">💬 העדפה לדבר איתי קודם? לחץ כאן לווטסאפ</a>
-        </div>
-    </section>
-
+    <section>
         <div class="quote-section">
             <p class="quote-text">"אני מאמין שאף אחד לא צריך להישאר מאחור בעידן ה-AI. אבל יותר מזה - אני מאמין שאף אחד לא צריך לעשות את זה לבד. לכן אני כאן. איתך. יד ביד. עד שאתה מצליח."</p>
             <p class="quote-author">— מתנאל מלכה, מייסד "AI זה פשוט"</p>
@@ -1343,7 +1196,7 @@
                 <ul class="footer-links">
                     <li><a href="#problem">הבעיה</a></li>
                     <li><a href="#solution">הפתרון</a></li>
-                    <li><a href="#learning">מה תלמד</a></li>
+                    <li><a href="#schedule">מה תלמד</a></li>
                     <li><a href="#testimonials">המלצות</a></li>
                 </ul>
             </div>
