@@ -558,6 +558,51 @@
             font-weight: bold;
         }
 
+        /* סקשן הציטוט והתמונה - מעודכן לתמונה גדולה ומלאה */
+        .quote-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .quote-image {
+            flex: 1;
+            max-width: 450px; /* תמונה גדולה מאוד במחשב */
+        }
+
+        .quote-image img {
+            width: 100%;
+            height: auto; /* שומר על הפרופורציות המקוריות - מלבן */
+            border-radius: 12px; /* עיגול פינות עדין מאוד רק כדי להשתלב יפה בעיצוב */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            display: block;
+        }
+
+        .quote-content {
+            flex: 1.5;
+        }
+
+        .quote-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-author {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
         /* Testimonials */
         .testimonial-grid {
             display: grid;
@@ -601,86 +646,6 @@
         .testimonial-role {
             color: var(--text-secondary);
             font-size: 0.95rem;
-        }
-
-        /* FAQ */
-        .faq-list {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            padding: 1.5rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background: rgba(59, 130, 246, 0.05);
-            color: var(--accent-blue);
-        }
-
-        .faq-answer {
-            padding: 0 1.5rem 1.5rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            font-size: 1.1rem;
-            display: none;
-        }
-
-        /* סקשן הציטוט והתמונה - מעודכן לתמונה גדולה ומלאה */
-        .quote-section {
-            max-width: 1000px;
-            margin: 4rem auto 0 auto;
-            padding: 3rem;
-            background: var(--card-bg);
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .quote-image {
-            flex: 1;
-            max-width: 450px; /* תמונה גדולה מאוד במחשב */
-        }
-
-        .quote-image img {
-            width: 100%;
-            height: auto; /* שומר על הפרופורציות המקוריות - מלבן */
-            border-radius: 12px; /* עיגול פינות עדין מאוד רק כדי להשתלב יפה בעיצוב */
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-            display: block;
-        }
-
-        .quote-content {
-            flex: 1.5;
-        }
-
-        .quote-text {
-            font-size: 1.4rem;
-            line-height: 1.8;
-            font-style: italic;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .quote-author {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--accent-blue);
         }
 
         /* Final CTA */
@@ -734,6 +699,41 @@
 
         .divider:after {
             left: 60%;
+        }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(59, 130, 246, 0.05);
+            color: var(--accent-blue);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 1.1rem;
+            display: none;
         }
 
         /* Footer */
@@ -1156,6 +1156,18 @@
         </div>
     </section>
 
+    <section>
+        <div class="quote-section">
+            <div class="quote-image">
+                <img src="https://res.cloudinary.com/dhkn7tjxq/image/upload/f_auto,q_auto/v1771869389/IMG_2143_uooldm.png" alt="מתנאל מלכה">
+            </div>
+            <div class="quote-content">
+                <p class="quote-text">"אני מאמין שאף אחד לא צריך להישאר מאחור בעידן ה-AI. אבל יותר מזה - אני מאמין שאף אחד לא צריך לעשות את זה לבד. לכן אני כאן. איתך. יד ביד. עד שאתה מצליח."</p>
+                <p class="quote-author">— מתנאל מלכה, מייסד "AI זה פשוט"</p>
+            </div>
+        </div>
+    </section>
+
     <section id="testimonials">
         <h2>מה בוגרי הספרינט אומרים?</h2>
         <p class="section-subtitle">סיפורי הצלחה אמיתיים</p>
@@ -1181,6 +1193,25 @@
                 <p class="testimonial-author">יוסי אברהם</p>
                 <p class="testimonial-role">יועץ פיננסי</p>
             </div>
+        </div>
+    </section>
+
+    <section class="final-cta" id="form">
+        <div class="cta-container" style="padding: 4rem 1.5rem;">
+            <h2>הצעד הראשון מתחיל כאן.</h2>
+            <p class="section-subtitle">הספרינט הבא מתחיל ב-24.02 (יום שלישי, 19:00)</p>
+
+            <div class="form-container">
+                <div class="form-placeholder">
+                    📋 כאן יוטמע טופס JotForm שלך<br><br>
+                    שדות מומלצים: שם מלא, טלפון, אימייל, שם העסק / תחום,<br>
+                    "מה הכי מעכב אותך היום להתחיל עם תוכן?"
+                </div>
+            </div>
+
+            <div class="divider">או</div>
+
+            <a href="https://wa.me/yourphone" class="btn btn-primary btn-large">💬 העדפה לדבר איתי קודם? לחץ כאן לווטסאפ</a>
         </div>
     </section>
 
@@ -1242,37 +1273,6 @@
                     מגיעים למפגש הראשון חינם. לא אהבת לא שילמת. אם אהבת - ממשיך לשאר המפגשים.
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="quote-section">
-            <div class="quote-image">
-                <img src="https://res.cloudinary.com/dhkn7tjxq/image/upload/f_auto,q_auto/v1771869389/IMG_2143_uooldm.png" alt="מתנאל מלכה">
-            </div>
-            <div class="quote-content">
-                <p class="quote-text">"אני מאמין שאף אחד לא צריך להישאר מאחור בעידן ה-AI. אבל יותר מזה - אני מאמין שאף אחד לא צריך לעשות את זה לבד. לכן אני כאן. איתך. יד ביד. עד שאתה מצליח."</p>
-                <p class="quote-author">— מתנאל מלכה, מייסד "AI זה פשוט"</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="final-cta" id="form">
-        <div class="cta-container" style="padding: 4rem 1.5rem;">
-            <h2>הצעד הראשון מתחיל כאן.</h2>
-            <p class="section-subtitle">הספרינט הבא מתחיל ב-24.02 (יום שלישי, 19:00)</p>
-
-            <div class="form-container">
-                <div class="form-placeholder">
-                    📋 כאן יוטמע טופס JotForm שלך<br><br>
-                    שדות מומלצים: שם מלא, טלפון, אימייל, שם העסק / תחום,<br>
-                    "מה הכי מעכב אותך היום להתחיל עם תוכן?"
-                </div>
-            </div>
-
-            <div class="divider">או</div>
-
-            <a href="https://wa.me/yourphone" class="btn btn-primary btn-large">💬 העדפה לדבר איתי קודם? לחץ כאן לווטסאפ</a>
         </div>
     </section>
 
