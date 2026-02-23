@@ -740,6 +740,7 @@
             color: var(--text-secondary);
         }
 
+        /* סקשן הציטוט עם התמונה החדשה */
         .quote-section {
             max-width: 800px;
             margin: 4rem auto;
@@ -747,6 +748,24 @@
             background: var(--card-bg);
             border-radius: 16px;
             border-right: 4px solid var(--accent-blue);
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .quote-image {
+            flex-shrink: 0;
+            width: 120px;
+        }
+
+        .quote-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .quote-content {
+            flex-grow: 1;
         }
 
         .quote-text {
@@ -754,7 +773,7 @@
             line-height: 1.8;
             font-style: italic;
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .quote-author {
@@ -803,6 +822,22 @@
 
             .price {
                 font-size: 3rem;
+            }
+
+            /* התאמות לנייד עבור סקשן הציטוט והתמונה */
+            .quote-section {
+                padding: 1.5rem;
+                gap: 1rem;
+                flex-direction: row; 
+            }
+
+            .quote-image {
+                width: 80px; 
+            }
+
+            .quote-text {
+                font-size: 1.1rem; 
+                margin-bottom: 0.5rem;
             }
         }
 
@@ -1179,8 +1214,13 @@
 
     <section>
         <div class="quote-section">
-            <p class="quote-text">"אני מאמין שאף אחד לא צריך להישאר מאחור בעידן ה-AI. אבל יותר מזה - אני מאמין שאף אחד לא צריך לעשות את זה לבד. לכן אני כאן. איתך. יד ביד. עד שאתה מצליח."</p>
-            <p class="quote-author">— מתנאל מלכה, מייסד "AI זה פשוט"</p>
+            <div class="quote-image">
+                <img src="https://res.cloudinary.com/dhkn7tjxq/image/upload/w_200,f_auto,q_auto/v1771869389/IMG_2143_uooldm.png" alt="מתנאל מלכה">
+            </div>
+            <div class="quote-content">
+                <p class="quote-text">"אני מאמין שאף אחד לא צריך להישאר מאחור בעידן ה-AI. אבל יותר מזה - אני מאמין שאף אחד לא צריך לעשות את זה לבד. לכן אני כאן. איתך. יד ביד. עד שאתה מצליח."</p>
+                <p class="quote-author">— מתנאל מלכה, מייסד "AI זה פשוט"</p>
+            </div>
         </div>
     </section>
 
