@@ -872,18 +872,15 @@
                 display: block;
                 position: fixed;
                 bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 90%;
-                max-width: 400px;
+                left: 20px; /* הצמדה לצד שמאל במקום למרכז */
                 z-index: 999;
                 animation: slideUp 0.5s ease-out forwards;
             }
 
             .mobile-sticky-wrapper .btn {
-                width: 100%;
-                padding: 1rem;
-                font-size: 1.1rem;
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+                border-radius: 50px; /* הופך את הכפתור לצורת גלולה (Pill) */
                 box-shadow: 0 10px 25px rgba(102, 126, 234, 0.6);
             }
         }
